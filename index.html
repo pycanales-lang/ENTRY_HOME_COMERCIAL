@@ -1,250 +1,254 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8QS0FFX4MB"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-8QS0FFX4MB');
-</script>
+    <meta charset="UTF-8">
+    <title>ENTRY HOME | Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta charset="UTF-8">
-<title>ENTRY HOME | Competencia Comercial</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --primary: #003366;
+            --accent: #ffcc00;
+            --success: #10b981;
+            --text-main: #1e293b;
+            --text-light: #64748b;
+        }
 
-<style>
-body{
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg,#002f6c,#0055a5);
-    margin:0;
-    padding:20px;
-    user-select:none;
-}
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
+            background: radial-gradient(circle at top right, #1e3a8a, #0f172a);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            color: var(--text-main);
+            /* Seguridad */
+            -webkit-user-select: none; user-select: none;
+        }
 
-.container{
-    max-width:760px;
-    background:#fff;
-    margin:auto;
-    padding:30px;
-    border-radius:14px;
-    box-shadow:0 12px 28px rgba(0,0,0,.25);
-    position:relative;
-}
+        /* Contenedor Principal Estilo Glass */
+        .container {
+            max-width: 440px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(10px);
+            padding: 35px 25px;
+            border-radius: 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
 
-.watermark{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%) rotate(-25deg);
-    font-size:48px;
-    color:rgba(0,0,0,0.05);
-    pointer-events:none;
-}
+        /* Decoración de fondo */
+        .circle-deco {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            background: var(--accent);
+            filter: blur(40px);
+            opacity: 0.3;
+            z-index: 0;
+        }
 
-.header{
-    text-align:center;
-    margin-bottom:25px;
-}
+        .header {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 30px;
+        }
 
-.header h1{
-    margin:0;
-    color:#003366;
-    font-size:36px;
-}
+        .badge {
+            background: #fff9db;
+            color: #856404;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            border: 1px solid var(--accent);
+            display: inline-block;
+            margin-bottom: 10px;
+        }
 
-.header p{
-    margin-top:8px;
-    color:#555;
-    font-weight:bold;
-}
+        h1 {
+            color: var(--primary);
+            margin: 0;
+            font-size: 34px;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
 
-.tag{
-    display:inline-block;
-    background:#ffcc00;
-    padding:6px 14px;
-    border-radius:20px;
-    font-size:13px;
-    font-weight:bold;
-    margin-bottom:10px;
-}
+        /* Tabla de Premios Estilizada */
+        .prize-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 12px;
+            margin-bottom: 20px;
+        }
 
-.table{
-    margin-top:25px;
-    border-radius:12px;
-    overflow:hidden;
-}
+        .prize-table th {
+            text-align: left;
+            padding: 0 10px;
+            color: var(--text-light);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-.table-header, .row{
-    display:grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    padding:14px;
-    align-items:center;
-}
+        .prize-row td {
+            background: #fdfdfd;
+            padding: 15px 10px;
+            border-top: 1px solid #f1f5f9;
+            border-bottom: 1px solid #f1f5f9;
+            transition: transform 0.2s;
+        }
 
-.table-header{
-    background:#003366;
-    color:#fff;
-    font-weight:bold;
-}
+        .prize-row td:first-child { border-left: 1px solid #f1f5f9; border-top-left-radius: 15px; border-bottom-left-radius: 15px; }
+        .prize-row td:last-child { border-right: 1px solid #f1f5f9; border-top-right-radius: 15px; border-bottom-right-radius: 15px; }
 
-.row{
-    border-bottom:1px solid #eee;
-}
+        .prize-row:hover td {
+            background: #f8fafc;
+            transform: translateY(-2px);
+        }
 
-.row:last-child{
-    border-bottom:none;
-}
+        .count {
+            font-weight: 800;
+            color: #2563eb;
+            font-size: 18px;
+            padding-left: 15px !important;
+        }
 
-.badge{
-    background:#003366;
-    color:#fff;
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:bold;
-    margin:auto;
-}
+        .prize-name { font-weight: 700; color: #334155; font-size: 14px; margin: 0; }
+        .prize-brand { font-size: 10px; color: var(--text-light); text-transform: uppercase; font-weight: 600; }
 
-.qty{
-    font-size:26px;
-    font-weight:bold;
-    color:#009933;
-    text-align:center;
-}
+        .qty {
+            text-align: center;
+            font-weight: 800;
+            color: var(--success);
+            background: #ecfdf5;
+            padding: 5px 10px !important;
+            border-radius: 10px;
+            font-size: 14px;
+        }
 
-.criteria{
-    margin-top:30px;
-    background:#f4f8fc;
-    padding:20px;
-    border-radius:12px;
-}
+        /* Cuadro de Información */
+        .info-card {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 25px;
+            border: 1px dashed #cbd5e1;
+        }
 
-.criteria h3{
-    margin-top:0;
-    color:#003366;
-}
+        .info-card h2 {
+            font-size: 15px;
+            color: var(--primary);
+            margin: 0 0 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-.criteria ul{
-    padding-left:20px;
-    line-height:1.6;
-}
+        .info-card ul, .info-card ol {
+            margin: 0;
+            padding-left: 18px;
+            font-size: 13px;
+            color: #475569;
+            line-height: 1.7;
+        }
 
-.criteria li{
-    margin-bottom:6px;
-}
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 10px;
+            color: #94a3b8;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
 
-.whatsapp-btn{
-    display:block;
-    margin-top:30px;
-    background:linear-gradient(135deg,#25D366,#128C7E);
-    color:#fff;
-    padding:16px;
-    text-align:center;
-    border-radius:14px;
-    font-size:18px;
-    font-weight:bold;
-    text-decoration:none;
-    box-shadow:0 8px 22px rgba(37,211,102,.45);
-    transition:.3s;
-}
-
-.whatsapp-btn:hover{
-    transform:scale(1.04);
-    background:linear-gradient(135deg,#1ebe5d,#0f6f5c);
-}
-
-.footer{
-    margin-top:30px;
-    text-align:center;
-    font-size:12px;
-    color:#999;
-}
-</style>
-
-<script>
-document.addEventListener('contextmenu', e => e.preventDefault());
-document.addEventListener('visibilitychange', () => {
-    document.body.style.filter = document.hidden ? "blur(10px)" : "none";
-});
-</script>
-
+        .emoji-medal { font-size: 1.2em; vertical-align: middle; }
+    </style>
 </head>
 <body>
 
 <div class="container">
-<div class="watermark">USO INTERNO • CANALES</div>
+    <div class="circle-deco"></div>
 
-<div class="header">
-    <span class="tag">COMPETENCIA COMERCIAL</span>
-    <h1>🚀 ENTRY HOME</h1>
-    <p>Competencia Interna para Asesores</p>
-</div>
-
-<div class="table">
-    <div class="table-header">
-        <div>Cant. Ganadores</div>
-        <div>Premio Asesores</div>
-        <div>QTY</div>
+    <div class="header">
+        <span class="badge">Enero 2025</span>
+        <h1>ENTRY HOME</h1>
+        <p style="font-size: 13px; color: var(--text-light); margin-top: 5px;">Panel de Competencia Comercial</p>
     </div>
 
-    <div class="row">
-        <div class="badge">12</div>
-        <div>🎵 Speaker JBL GO 4</div>
-        <div class="qty">7</div>
+    <table class="prize-table">
+        <thead>
+            <tr>
+                <th>Ganadores</th>
+                <th>Premio Detallado</th>
+                <th style="text-align: center;">Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="prize-row">
+                <td class="count">🥇 12</td>
+                <td>
+                    <p class="prize-name">Speaker GO 4</p>
+                    <span class="prize-brand">JBL Premium Audio</span>
+                </td>
+                <td><span class="qty">7</span></td>
+            </tr>
+            <tr class="prize-row">
+                <td class="count">🥈 08</td>
+                <td>
+                    <p class="prize-name">Mochila Tigo</p>
+                    <span class="prize-brand">Edición Especial</span>
+                </td>
+                <td><span class="qty">6</span></td>
+            </tr>
+            <tr class="prize-row">
+                <td class="count">🥉 16</td>
+                <td>
+                    <p class="prize-name">Vale Supermercado</p>
+                    <span class="prize-brand">Gs. 200.000 Canjeable</span>
+                </td>
+                <td><span class="qty">5</span></td>
+            </tr>
+            <tr class="prize-row">
+                <td class="count">🏅 16</td>
+                <td>
+                    <p class="prize-name">Hoppy Azul</p>
+                    <span class="prize-brand">Marca BUBBA Original</span>
+                </td>
+                <td><span class="qty">4</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="info-card">
+        <h2>📌 Criterios de Calificación</h2>
+        <ul>
+            <li><b>Generadas:</b> 01 al 14 de Enero 2025.</li>
+            <li><b>Instaladas:</b> Hasta el 17 de Enero 2025.</li>
+            <li>Premios sujetos a disponibilidad por ranking.</li>
+        </ul>
+        
+        <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 15px 0;">
+        
+        <h2>⚖️ Desempate</h2>
+        <ol>
+            <li>Mayor cantidad de ventas generadas.</li>
+            <li>Mayor volumen de planes Pospago.</li>
+        </ol>
     </div>
 
-    <div class="row">
-        <div class="badge">8</div>
-        <div>🎒 Mochila Tigo</div>
-        <div class="qty">6</div>
+    <div class="footer">
+        © 2025 – CANALES | DOCUMENTO DE USO INTERNO CONFIDENCIAL
     </div>
-
-    <div class="row">
-        <div class="badge">16</div>
-        <div>🛒 Vale Super Gs. 200.000</div>
-        <div class="qty">5</div>
-    </div>
-
-    <div class="row">
-        <div class="badge">16</div>
-        <div>💧 Botella Hoppy BUBBA Azul</div>
-        <div class="qty">4</div>
-    </div>
-</div>
-
-<div class="criteria">
-    <h3>📌 Criterios</h3>
-    <ul>
-        <li>Generadas del <strong>01 al 10 de enero</strong>.</li>
-        <li>Instaladas hasta el <strong>15 de enero</strong>.</li>
-        <li>Cada premio tiene una cantidad definida de ganadores.</li>
-    </ul>
-
-    <h3>⚖️ En caso de empate</h3>
-    <ul>
-        <li>Mayor cantidad de generadas (01 al 10 de enero).</li>
-        <li>Mayor cantidad de pospago.</li>
-    </ul>
-</div>
-
-<a 
-  class="whatsapp-btn"
-  href="https://wa.me/595982604264?text=Hola%2C%20tengo%20consultas%20sobre%20la%20competencia%20ENTRY%20HOME."
-  target="_blank"
-  onclick="gtag('event','click_whatsapp',{event_category:'Contacto',event_label:'Entry Home'});"
->
-📲 Consultas por WhatsApp
-</a>
-
-<div class="footer">
-© 2025 – CANALES | Uso interno
-</div>
-
 </div>
 
 </body>
