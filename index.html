@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>ENTRY HOME | Dashboard</title>
+    <title>ENTRY HOME | Dashboard PRO</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
@@ -10,6 +10,7 @@
             --primary: #003366;
             --accent: #ffcc00;
             --success: #10b981;
+            --warning: #f59e0b;
             --text-main: #1e293b;
             --text-light: #64748b;
         }
@@ -18,238 +19,218 @@
             font-family: 'Segoe UI', Roboto, Helvetica, sans-serif;
             background: radial-gradient(circle at top right, #1e3a8a, #0f172a);
             margin: 0;
-            padding: 20px;
+            padding: 15px;
             display: flex;
             justify-content: center;
             min-height: 100vh;
             color: var(--text-main);
-            /* Seguridad */
             -webkit-user-select: none; user-select: none;
         }
 
-        /* Contenedor Principal Estilo Glass */
         .container {
             max-width: 440px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.96);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
-            padding: 35px 25px;
+            padding: 30px 20px;
             border-radius: 30px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* Decoración de fondo */
-        .circle-deco {
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            width: 100px;
-            height: 100px;
-            background: var(--accent);
-            filter: blur(40px);
-            opacity: 0.3;
-            z-index: 0;
-        }
-
-        .header {
+        /* --- MEJORA: BARRA DE TIEMPO --- */
+        .timer-section {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 15px;
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
             text-align: center;
-            position: relative;
-            z-index: 1;
-            margin-bottom: 30px;
         }
 
+        .progress-container {
+            background: #e2e8f0;
+            border-radius: 10px;
+            height: 10px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--success));
+            width: 0%; /* Se controla con JS */
+            transition: width 1s ease-in-out;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .count-item { font-size: 18px; }
+        .count-label { font-size: 10px; color: var(--text-light); text-transform: uppercase; display: block; }
+
+        /* --- CABECERA --- */
+        .header { text-align: center; margin-bottom: 20px; }
         .badge {
             background: #fff9db;
             color: #856404;
             padding: 5px 15px;
             border-radius: 50px;
             font-weight: 800;
-            font-size: 11px;
+            font-size: 10px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
             border: 1px solid var(--accent);
             display: inline-block;
-            margin-bottom: 10px;
         }
 
-        h1 {
-            color: var(--primary);
-            margin: 0;
-            font-size: 34px;
-            font-weight: 900;
-            letter-spacing: -1px;
-        }
+        h1 { color: var(--primary); margin: 10px 0 0; font-size: 32px; font-weight: 900; }
 
-        /* Tabla de Premios Estilizada */
-        .prize-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0 12px;
-            margin-bottom: 20px;
-        }
-
-        .prize-table th {
-            text-align: left;
-            padding: 0 10px;
-            color: var(--text-light);
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
+        /* --- TABLA DE PREMIOS --- */
+        .prize-table { width: 100%; border-collapse: separate; border-spacing: 0 10px; }
+        .prize-table th { text-align: left; font-size: 11px; color: var(--text-light); text-transform: uppercase; padding: 0 10px; }
+        
         .prize-row td {
-            background: #fdfdfd;
-            padding: 15px 10px;
+            background: #ffffff;
+            padding: 12px 10px;
             border-top: 1px solid #f1f5f9;
             border-bottom: 1px solid #f1f5f9;
-            transition: transform 0.2s;
         }
-
         .prize-row td:first-child { border-left: 1px solid #f1f5f9; border-top-left-radius: 15px; border-bottom-left-radius: 15px; }
         .prize-row td:last-child { border-right: 1px solid #f1f5f9; border-top-right-radius: 15px; border-bottom-right-radius: 15px; }
 
-        .prize-row:hover td {
-            background: #f8fafc;
-            transform: translateY(-2px);
-        }
-
-        .count {
-            font-weight: 800;
-            color: #2563eb;
-            font-size: 18px;
-            padding-left: 15px !important;
-        }
-
+        .count { font-weight: 800; color: #2563eb; font-size: 18px; }
         .prize-name { font-weight: 700; color: #334155; font-size: 14px; margin: 0; }
-        .prize-brand { font-size: 10px; color: var(--text-light); text-transform: uppercase; font-weight: 600; }
-
-        .qty {
-            text-align: center;
-            font-weight: 800;
-            color: var(--success);
-            background: #ecfdf5;
-            padding: 5px 10px !important;
-            border-radius: 10px;
-            font-size: 14px;
+        .prize-brand { font-size: 10px; color: var(--text-light); text-transform: uppercase; }
+        .qty { 
+            font-weight: 800; color: var(--success); background: #ecfdf5; 
+            padding: 4px 8px; border-radius: 8px; font-size: 13px;
         }
 
-        /* Cuadro de Información */
+        /* --- TARJETAS DE INFORMACIÓN --- */
         .info-card {
-            background: #f8fafc;
+            background: #f0f7ff;
             border-radius: 20px;
             padding: 20px;
-            margin-top: 25px;
-            border: 1px dashed #cbd5e1;
+            margin-top: 20px;
+            border: 1px solid #dbeafe;
         }
+        .info-card h2 { font-size: 15px; color: var(--primary); margin: 0 0 12px; display: flex; align-items: center; gap: 8px; }
+        .info-card ul, .info-card ol { margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.6; }
 
-        .info-card h2 {
-            font-size: 15px;
-            color: var(--primary);
-            margin: 0 0 15px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .info-card ul, .info-card ol {
-            margin: 0;
-            padding-left: 18px;
-            font-size: 13px;
-            color: #475569;
-            line-height: 1.7;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 10px;
-            color: #94a3b8;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-        }
-
-        .emoji-medal { font-size: 1.2em; vertical-align: middle; }
+        .footer { text-align: center; margin-top: 25px; font-size: 10px; color: #94a3b8; font-weight: 600; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="circle-deco"></div>
-
     <div class="header">
         <span class="badge">COMPETENCIA ASESORES TIENDAS</span>
         <h1>ENTRY HOME</h1>
-        <p style="font-size: 13px; color: var(--text-light); margin-top: 5px;">Lista de Premios</p>
+    </div>
+
+    <div class="timer-section">
+        <div style="font-size: 12px; font-weight: bold; color: var(--primary);">CIERRE DE GENERACIÓN</div>
+        <div class="progress-container">
+            <div id="p-bar" class="progress-bar"></div>
+        </div>
+        <div class="countdown">
+            <div class="count-item"><span id="days">00</span><span class="count-label">Días</span></div>
+            <div class="count-item"><span id="hours">00</span><span class="count-label">Horas</span></div>
+            <div class="count-item"><span id="mins">00</span><span class="count-label">Min</span></div>
+        </div>
     </div>
 
     <table class="prize-table">
         <thead>
             <tr>
-                <th>Cant. Ganadores</th>
-                <th>Premio Asesores</th>
-                <th style="text-align: center;">Qty</th>
+                <th>Ganadores</th>
+                <th>Premio</th>
+                <th style="text-align: center;">Stock</th>
             </tr>
         </thead>
         <tbody>
             <tr class="prize-row">
                 <td class="count">🥇 12</td>
-                <td>
-                    <p class="prize-name">Speaker GO 4</p>
-                    <span class="prize-brand">JBL Premium Audio</span>
-                </td>
-                <td><span class="qty">7</span></td>
+                <td><p class="prize-name">Speaker GO 4</p><span class="prize-brand">JBL Audio</span></td>
+                <td style="text-align: center;"><span class="qty">7</span></td>
             </tr>
             <tr class="prize-row">
                 <td class="count">🥈 08</td>
-                <td>
-                    <p class="prize-name">Mochila Tigo</p>
-                    <span class="prize-brand">Edición Especial</span>
-                </td>
-                <td><span class="qty">6</span></td>
+                <td><p class="prize-name">Mochila Tigo</p><span class="prize-brand">Edición Especial</span></td>
+                <td style="text-align: center;"><span class="qty">6</span></td>
             </tr>
             <tr class="prize-row">
                 <td class="count">🥉 16</td>
-                <td>
-                    <p class="prize-name">Vale Supermercado</p>
-                    <span class="prize-brand">Gs. 200.000 Canjeable</span>
-                </td>
-                <td><span class="qty">5</span></td>
+                <td><p class="prize-name">Vale Supermercado</p><span class="prize-brand">Gs. 200.000</span></td>
+                <td style="text-align: center;"><span class="qty">5</span></td>
             </tr>
             <tr class="prize-row">
                 <td class="count">🏅 16</td>
-                <td>
-                    <p class="prize-name">Hoppy Azul</p>
-                    <span class="prize-brand">Marca BUBBA Original</span>
-                </td>
-                <td><span class="qty">4</span></td>
+                <td><p class="prize-name">Hoppy Azul</p><span class="prize-brand">Marca BUBBA</span></td>
+                <td style="text-align: center;"><span class="qty">4</span></td>
             </tr>
         </tbody>
     </table>
 
     <div class="info-card">
-        <h2>📌 Criterios de Calificación</h2>
+        <h2>📌 Criterios Clave</h2>
         <ul>
-            <li><b>Generadas:</b> 01 al 14 de Enero 2025.</li>
-            <li><b>Instaladas:</b> Hasta el 17 de Enero 2025.</li>
-            <li>Cada premio tiene una cantidad de ganadores.</li>
+            <li><b>Generación:</b> Del 01 al 14 de Enero 2025.</li>
+            <li><b>Instalación:</b> Hasta el 17 de Enero 2025.</li>
         </ul>
-        
-        <hr style="border: none; border-top: 1px solid #e2e8f0; margin: 15px 0;">
-        
-        <h2>⚖️ Desempate</h2>
+        <hr style="border: none; border-top: 1px solid #dbeafe; margin: 15px 0;">
+        <h2>⚖️ Reglas de Desempate</h2>
         <ol>
-            <li>Mayor cantidad de generadas del 01 al 14 de enero. (No incluyen las OT canceladas).</li>
-            <li>Mayor cantidad de pospago.</li>
+            <li>Mayor cantidad de generadas (No incluye OT canceladas).</li>
+            <li>Mayor cantidad de planes Pospago.</li>
         </ol>
     </div>
 
     <div class="footer">
-        © 2025 – CANALES | DOCUMENTO DE USO INTERNO CONFIDENCIAL
+        © 2025 – CANALES | USO INTERNO CONFIDENCIAL
     </div>
 </div>
+
+<script>
+    // CONFIGURACIÓN DE FECHAS
+    const startDate = new Date('2025-01-01T00:00:00').getTime();
+    const endDate = new Date('2025-01-14T23:59:59').getTime();
+
+    function updateTimer() {
+        const now = new Date().getTime();
+        const totalDuration = endDate - startDate;
+        const elapsed = now - startDate;
+        const remaining = endDate - now;
+
+        // Actualizar Barra
+        let progress = (elapsed / totalDuration) * 100;
+        progress = Math.max(0, Math.min(100, progress));
+        document.getElementById('p-bar').style.width = progress + "%";
+
+        // Calcular Tiempo
+        if (remaining > 0) {
+            const d = Math.floor(remaining / (1000 * 60 * 60 * 24));
+            const h = Math.floor((remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+            
+            document.getElementById('days').innerText = d.toString().padStart(2, '0');
+            document.getElementById('hours').innerText = h.toString().padStart(2, '0');
+            document.getElementById('mins').innerText = m.toString().padStart(2, '0');
+        } else {
+            document.querySelector('.timer-section').innerHTML = "<b>¡COMPETENCIA FINALIZADA!</b>";
+        }
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+</script>
 
 </body>
 </html>
