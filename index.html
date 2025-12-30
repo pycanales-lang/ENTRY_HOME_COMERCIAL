@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>ENTRY HOME | Dashboard PRO</title>
+    <title>ENTRY HOME 2026 | Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
@@ -10,7 +10,6 @@
             --primary: #003366;
             --accent: #ffcc00;
             --success: #10b981;
-            --warning: #f59e0b;
             --text-main: #1e293b;
             --text-light: #64748b;
         }
@@ -39,7 +38,7 @@
             overflow: hidden;
         }
 
-        /* --- MEJORA: BARRA DE TIEMPO --- */
+        /* BARRA DE TIEMPO 2026 */
         .timer-section {
             background: #f8fafc;
             border-radius: 20px;
@@ -52,15 +51,15 @@
         .progress-container {
             background: #e2e8f0;
             border-radius: 10px;
-            height: 10px;
+            height: 12px;
             margin: 10px 0;
             overflow: hidden;
         }
 
         .progress-bar {
             height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--success));
-            width: 0%; /* Se controla con JS */
+            background: linear-gradient(90deg, #2563eb, var(--success));
+            width: 0%; 
             transition: width 1s ease-in-out;
         }
 
@@ -76,7 +75,6 @@
         .count-item { font-size: 18px; }
         .count-label { font-size: 10px; color: var(--text-light); text-transform: uppercase; display: block; }
 
-        /* --- CABECERA --- */
         .header { text-align: center; margin-bottom: 20px; }
         .badge {
             background: #fff9db;
@@ -92,7 +90,7 @@
 
         h1 { color: var(--primary); margin: 10px 0 0; font-size: 32px; font-weight: 900; }
 
-        /* --- TABLA DE PREMIOS --- */
+        /* TABLA DE PREMIOS */
         .prize-table { width: 100%; border-collapse: separate; border-spacing: 0 10px; }
         .prize-table th { text-align: left; font-size: 11px; color: var(--text-light); text-transform: uppercase; padding: 0 10px; }
         
@@ -105,7 +103,7 @@
         .prize-row td:first-child { border-left: 1px solid #f1f5f9; border-top-left-radius: 15px; border-bottom-left-radius: 15px; }
         .prize-row td:last-child { border-right: 1px solid #f1f5f9; border-top-right-radius: 15px; border-bottom-right-radius: 15px; }
 
-        .count { font-weight: 800; color: #2563eb; font-size: 18px; }
+        .count-winners { font-weight: 800; color: #2563eb; font-size: 16px; }
         .prize-name { font-weight: 700; color: #334155; font-size: 14px; margin: 0; }
         .prize-brand { font-size: 10px; color: var(--text-light); text-transform: uppercase; }
         .qty { 
@@ -113,7 +111,6 @@
             padding: 4px 8px; border-radius: 8px; font-size: 13px;
         }
 
-        /* --- TARJETAS DE INFORMACIÓN --- */
         .info-card {
             background: #f0f7ff;
             border-radius: 20px;
@@ -131,12 +128,12 @@
 
 <div class="container">
     <div class="header">
-        <span class="badge">COMPETENCIA ASESORES TIENDAS</span>
+        <span class="badge">COMPETENCIA ENERO 2026</span>
         <h1>ENTRY HOME</h1>
     </div>
 
     <div class="timer-section">
-        <div style="font-size: 12px; font-weight: bold; color: var(--primary);">CIERRE DE GENERACIÓN</div>
+        <div id="timer-status" style="font-size: 12px; font-weight: bold; color: var(--primary); margin-bottom: 5px;">TIEMPO RESTANTE</div>
         <div class="progress-container">
             <div id="p-bar" class="progress-bar"></div>
         </div>
@@ -150,29 +147,29 @@
     <table class="prize-table">
         <thead>
             <tr>
-                <th>Ganadores</th>
+                <th>Ganadores Posibles</th>
                 <th>Premio</th>
                 <th style="text-align: center;">Stock</th>
             </tr>
         </thead>
         <tbody>
             <tr class="prize-row">
-                <td class="count">🥇 12</td>
+                <td class="count-winners">🥇 Top 12</td>
                 <td><p class="prize-name">Speaker GO 4</p><span class="prize-brand">JBL Audio</span></td>
                 <td style="text-align: center;"><span class="qty">7</span></td>
             </tr>
             <tr class="prize-row">
-                <td class="count">🥈 08</td>
+                <td class="count-winners">🥈 Top 08</td>
                 <td><p class="prize-name">Mochila Tigo</p><span class="prize-brand">Edición Especial</span></td>
                 <td style="text-align: center;"><span class="qty">6</span></td>
             </tr>
             <tr class="prize-row">
-                <td class="count">🥉 16</td>
+                <td class="count-winners">🥉 Top 16</td>
                 <td><p class="prize-name">Vale Supermercado</p><span class="prize-brand">Gs. 200.000</span></td>
                 <td style="text-align: center;"><span class="qty">5</span></td>
             </tr>
             <tr class="prize-row">
-                <td class="count">🏅 16</td>
+                <td class="count-winners">🏅 Top 16</td>
                 <td><p class="prize-name">Hoppy Azul</p><span class="prize-brand">Marca BUBBA</span></td>
                 <td style="text-align: center;"><span class="qty">4</span></td>
             </tr>
@@ -180,52 +177,61 @@
     </table>
 
     <div class="info-card">
-        <h2>📌 Criterios Clave</h2>
+        <h2>📌 Cronograma 2026</h2>
         <ul>
-            <li><b>Generación:</b> Del 01 al 14 de Enero 2025.</li>
-            <li><b>Instalación:</b> Hasta el 17 de Enero 2025.</li>
+            <li><b>Ventas Generadas:</b> 01 al 14 de Enero 2026.</li>
+            <li><b>Instalaciones:</b> Hasta el 17 de Enero 2026.</li>
         </ul>
         <hr style="border: none; border-top: 1px solid #dbeafe; margin: 15px 0;">
         <h2>⚖️ Reglas de Desempate</h2>
         <ol>
-            <li>Mayor cantidad de generadas (No incluye OT canceladas).</li>
+            <li>Mayor cantidad de generadas (Ene 2026).</li>
             <li>Mayor cantidad de planes Pospago.</li>
         </ol>
     </div>
 
     <div class="footer">
-        © 2025 – CANALES | USO INTERNO CONFIDENCIAL
+        © 2026 – CANALES | USO INTERNO CONFIDENCIAL
     </div>
 </div>
 
 <script>
-    // CONFIGURACIÓN DE FECHAS
-    const startDate = new Date('2025-01-01T00:00:00').getTime();
-    const endDate = new Date('2025-01-14T23:59:59').getTime();
+    // CONFIGURACIÓN DE FECHAS ENERO 2026
+    const startDate = new Date('2026-01-01T00:00:00').getTime();
+    const endDate = new Date('2026-01-14T23:59:59').getTime();
 
     function updateTimer() {
         const now = new Date().getTime();
         const totalDuration = endDate - startDate;
-        const elapsed = now - startDate;
-        const remaining = endDate - now;
-
-        // Actualizar Barra
-        let progress = (elapsed / totalDuration) * 100;
-        progress = Math.max(0, Math.min(100, progress));
-        document.getElementById('p-bar').style.width = progress + "%";
-
-        // Calcular Tiempo
-        if (remaining > 0) {
-            const d = Math.floor(remaining / (1000 * 60 * 60 * 24));
-            const h = Math.floor((remaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
-            
-            document.getElementById('days').innerText = d.toString().padStart(2, '0');
-            document.getElementById('hours').innerText = h.toString().padStart(2, '0');
-            document.getElementById('mins').innerText = m.toString().padStart(2, '0');
+        
+        if (now < startDate) {
+            document.getElementById('timer-status').innerText = "LA COMPETENCIA INICIA EN:";
+            const diff = startDate - now;
+            showTime(diff);
+            document.getElementById('p-bar').style.width = "0%";
+        } else if (now > endDate) {
+            document.getElementById('timer-status').innerText = "COMPETENCIA FINALIZADA";
+            document.getElementById('p-bar').style.width = "100%";
+            document.getElementById('days').innerText = "00";
+            document.getElementById('hours').innerText = "00";
+            document.getElementById('mins').innerText = "00";
         } else {
-            document.querySelector('.timer-section').innerHTML = "<b>¡COMPETENCIA FINALIZADA!</b>";
+            document.getElementById('timer-status').innerText = "TIEMPO PARA EL CIERRE:";
+            const elapsed = now - startDate;
+            const remaining = endDate - now;
+            let progress = (elapsed / totalDuration) * 100;
+            document.getElementById('p-bar').style.width = progress + "%";
+            showTime(remaining);
         }
+    }
+
+    function showTime(ms) {
+        const d = Math.floor(ms / (1000 * 60 * 60 * 24));
+        const h = Math.floor((ms % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
+        document.getElementById('days').innerText = d.toString().padStart(2, '0');
+        document.getElementById('hours').innerText = h.toString().padStart(2, '0');
+        document.getElementById('mins').innerText = m.toString().padStart(2, '0');
     }
 
     setInterval(updateTimer, 1000);
